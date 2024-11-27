@@ -1,0 +1,23 @@
+<% if @article.errors.any? %>
+    <h3>These errors are prevent you from saving the article: </h3>
+    <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+<% end %>
+
+<%= form_with model: @article, data: {turbo: false} do |f| %>
+    <div>
+        <%= f.label :title %>
+    </div>
+    <div>
+        <%= f.text_field :title %>
+    </div>
+    <div>
+        <%= f.label :description %>
+    </div>
+    <div>
+        <%= f.text_area :description %>
+    </div>
+    <%= f.submit %>
+<% end %>
